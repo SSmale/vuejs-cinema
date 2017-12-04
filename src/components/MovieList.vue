@@ -5,6 +5,7 @@
                         :movie="movie.movie" 
                         :sessions="movie.sessions" 
                         :day="day"
+                        :time="time"
                         :key="movie.id"                        
                         ></movie-item>
         </div>
