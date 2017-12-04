@@ -25,7 +25,8 @@ const router = new VueRouter({
 
 // Import bus functions
 import {
-    checkFilter
+    checkFilter,
+    setDay
 } from './util/bus'
 
 // Adding objects to the global namespace
@@ -59,7 +60,7 @@ new Vue({
         this.$http.get('/api').then(res => {
                 this.movies = res.data
             }),
-            this.$bus.$on('check-filter', checkFilter.bind(this))
-        this.$bus.$on('set-day', (day) => this.day = day)
+            this.$bus.$on('check-filter', checkFilter.bind(this)),
+            this.$bus.$on('set-day', setDay.bind(this))
     }
 })

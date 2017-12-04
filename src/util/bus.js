@@ -9,6 +9,11 @@ function checkFilter(catagory, name, state) {
     }
 }
 
+function setDay(day) {
+    this.day = day
+}
+
 export {
-    checkFilter
+    checkFilter,
+    setDay
 }
