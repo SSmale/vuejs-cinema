@@ -8,8 +8,7 @@ import VueResource from 'vue-resource'
 import moment from 'moment-timezone'
 
 // Import Components
-import MovieList from "./components/MovieList.vue";
-import MovieFilter from "./components/MovieFilter.vue";
+import Overview from "./components/Overview.vue";
 
 // Define bus for global props passing... VueX?
 const bus = new Vue();
@@ -40,10 +39,8 @@ moment.tz.setDefault("UTC")
 new Vue({
     el: '#app',
     components: {
-        MovieList,
-        MovieFilter
+        Overview
     },
-
     data: {
         moment,
         genre: [],
