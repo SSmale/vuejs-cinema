@@ -3,6 +3,7 @@ import './style.scss'
 // Import Vue.use components
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import VueRouter from "vue-router";
 
 // Import 3rd Party Libaries
 import moment from 'moment-timezone'
@@ -15,6 +16,15 @@ const bus = new Vue();
 
 // Vue.use...
 Vue.use(VueResource)
+Vue.use(VueRouter)
+
+// Import routes
+import routes from "./util/routes";
+
+// Init VueRouter
+const router = new VueRouter({
+    routes
+})
 
 // Import bus functions
 import {
@@ -38,6 +48,7 @@ moment.tz.setDefault("UTC")
 
 new Vue({
     el: '#app',
+    router,
     components: {
         Overview
     },
