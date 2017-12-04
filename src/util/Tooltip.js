@@ -13,7 +13,6 @@ let mouseOutHandler = function (e) {
     removeClass(span, 'tooltip-show')
 }
 
-
 export default {
     install(Vue) {
         Vue.directive('tooltip', {
