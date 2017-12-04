@@ -1,12 +1,9 @@
 <template>
     <div id="movie-list">
         <div v-if="filteredMovies.length">
-            <movie-item v-for="movie in filteredMovies" 
-                        :movie="movie.movie" 
-                        :key="movie.id"                        
-            >
+            <movie-item v-for="movie in filteredMovies" :movie="movie.movie" :key="movie.id">
                 <div class="movie-sessions">
-                    <div class="session-time-wrapper" v-for="session in filteredSessions(movie.sessions)" :key="session.id">
+                    <div class="session-time-wrapper tooltip-wrapper" v-tooltip="{ seats: session.seats }" v-for="session in filteredSessions(movie.sessions)" :key="session.id">
                         <div class="session-time">
                             {{ formattSessionTime(session.time) }}
                         </div>
