@@ -8,9 +8,6 @@ import VueRouter from "vue-router";
 // Import 3rd Party Libaries
 import moment from 'moment-timezone'
 
-// Import Components
-import Overview from "./components/Overview.vue";
-
 // Define bus for global props passing... VueX?
 const bus = new Vue();
 
@@ -49,9 +46,6 @@ moment.tz.setDefault("UTC")
 new Vue({
     el: '#app',
     router,
-    components: {
-        Overview
-    },
     data: {
         moment,
         genre: [],
