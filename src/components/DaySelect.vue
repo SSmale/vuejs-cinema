@@ -2,6 +2,10 @@
   <div id="day-select">
       <ul class="days">
           <li :class="{day: true, active:isActive(day)}" v-for="(day, index) in days" v-on:click="selectDay(day)" :key="index">{{ formatDay(day)}} </li>
+          <li class="day-selector">
+              <span class="dec" v-on:click="changeDay(-1)"></span>
+              <span class="inc" v-on:click="changeDay(1)"></span>
+          </li>
       </ul>
   </div>
 </template>
@@ -27,6 +31,12 @@ export default {
     },
     selectDay(day) {
       this.$bus.$emit("set-day", day);
+    },
+    changeDay(value) {
+      let newDay = this.$moment(this.selected.add(value, "days"));
+      if (this.days.find(day => newDay.isSame(day, "day"))) {
+        this.selectDay(newDay);
+      }
     }
   }
 };
