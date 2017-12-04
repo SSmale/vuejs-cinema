@@ -1,6 +1,10 @@
 <template>
     <div id="movie-list">
-        <movie-item v-for="movie in filteredMovies" :movie="movie.movie" :key="movie.id"></movie-item>
+        <div v-if="filteredMovies.length">
+            <movie-item v-for="movie in filteredMovies" :movie="movie.movie" :key="movie.id"></movie-item>
+        </div>
+        <div class="no-results" v-else-if="movies.length">No Results.</div>
+        <div class="no-results" v-else>Loading...</div>
     </div>
 </template>
 
