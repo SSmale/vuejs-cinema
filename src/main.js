@@ -4,7 +4,7 @@ import './style.scss'
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueRouter from "vue-router"
-import Tooltip from "./util/tooltip"
+import Tooltip from "./util/Tooltip"
 
 // Import 3rd Party Libaries
 import moment from 'moment-timezone'
