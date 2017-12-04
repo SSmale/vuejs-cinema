@@ -37,7 +37,8 @@ new Vue({
         moment,
         genre: [],
         time: [],
-        movies: []
+        movies: [],
+        date: moment()
     },
     created() {
         // GET /api
