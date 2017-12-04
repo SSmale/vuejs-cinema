@@ -51,7 +51,7 @@ new Vue({
         genre: [],
         time: [],
         movies: [],
-        date: moment(),
+        day: moment(),
         bus
     },
     created() {
@@ -60,5 +60,6 @@ new Vue({
                 this.movies = res.data
             }),
             this.$bus.$on('check-filter', checkFilter.bind(this))
+        this.$bus.$on('set-day', (day) => this.day = day)
     }
 })
