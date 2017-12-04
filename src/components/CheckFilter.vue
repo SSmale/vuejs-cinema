@@ -15,7 +15,7 @@ export default {
   methods: {
     checkFilter() {
       this.checked = !this.checked;
-      this.$emit("check-filter", this.catagory, this.name, this.checked);
+      this.$bus.$emit("check-filter", this.catagory, this.name, this.checked);
     }
   },
   props: ["name", "catagory"]

@@ -59,9 +59,9 @@ new Vue({
     },
     created() {
         // GET /api
-        this.$http.get('/api')
-            .then(res => {
+        this.$http.get('/api').then(res => {
                 this.movies = res.data
-            })
+            }),
+            this.$bus.$on('check-filter', this.checkFilter)
     }
 })
