@@ -9,6 +9,7 @@
 
 <script>
 import genres from "../util/genres";
+import CheckFilter from "./CheckFilter.vue";
 export default {
   data() {
     return {
@@ -21,23 +22,7 @@ export default {
     }
   },
   components: {
-    "check-filter": {
-      data() {
-        return {
-          checked: false
-        };
-      },
-      methods: {
-        checkFilter() {
-          this.checked = !this.checked;
-          this.$emit("check-filter", "genre", this.name, this.checked);
-        }
-      },
-      template: `<div :class="{'check-filter': true, 'active': checked}" v-on:click="checkFilter">
-                    <span class="checkbox"></span>
-                    <span class="check-filter-title" >{{ name }}</span></div>`,
-      props: ["name"]
-    }
+    CheckFilter
   }
 };
 </script>
