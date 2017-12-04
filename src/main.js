@@ -1,8 +1,11 @@
 import './style.scss'
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 
 import MovieList from "./components/MovieList.vue";
 import MovieFilter from "./components/MovieFilter.vue";
+
+Vue.use(VueResource)
 
 new Vue({
     el: '#app',
@@ -24,6 +27,14 @@ new Vue({
     },
     data: {
         genre: [],
-        time: []
+        time: [],
+        movies: []
+    },
+    created() {
+        // GET /api
+        this.$http.get('/api')
+            .then(res => {
+                this.movies = res.data
+            })
     }
 })
