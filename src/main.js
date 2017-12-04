@@ -17,6 +17,11 @@ const bus = new Vue();
 // Vue.use...
 Vue.use(VueResource)
 
+// Import bus functions
+import {
+    checkFilter
+} from './util/bus'
+
 // Adding objects to the global namespace
 Object.defineProperty(Vue.prototype, '$moment', {
     get() {
@@ -29,6 +34,7 @@ Object.defineProperty(Vue.prototype, '$bus', {
     }
 })
 
+// Init moment timezone
 moment.tz.setDefault("UTC")
 
 new Vue({
@@ -37,18 +43,7 @@ new Vue({
         MovieList,
         MovieFilter
     },
-    methods: {
-        checkFilter(catagory, name, state) {
-            if (state) {
-                this[catagory].push(name)
-            } else {
-                let index = this[catagory].indexOf(name)
-                if (index > -1) {
-                    this[catagory].splice(index, 1)
-                }
-            }
-        }
-    },
+
     data: {
         moment,
         genre: [],
@@ -62,6 +57,6 @@ new Vue({
         this.$http.get('/api').then(res => {
                 this.movies = res.data
             }),
-            this.$bus.$on('check-filter', this.checkFilter)
+            this.$bus.$on('check-filter', checkFilter.bind(this))
     }
 })
