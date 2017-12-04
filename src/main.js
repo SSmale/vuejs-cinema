@@ -3,7 +3,8 @@ import './style.scss'
 // Import Vue.use components
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import VueRouter from "vue-router";
+import VueRouter from "vue-router"
+import Tooltip from "./util/tooltip"
 
 // Import 3rd Party Libaries
 import moment from 'moment-timezone'
@@ -14,6 +15,7 @@ const bus = new Vue();
 // Vue.use...
 Vue.use(VueResource)
 Vue.use(VueRouter)
+Vue.use(Tooltip)
 
 // Import routes
 import routes from "./util/routes";
@@ -64,40 +66,3 @@ new Vue({
             this.$bus.$on('set-day', setDay.bind(this))
     }
 })
-
-import {
-    addClass,
-    removeClass
-} from "./util/helpers";
-
-Vue.directive('tooltip', {
-    bind(el, bindings) {
-        let span = document.createElement('SPAN')
-        let text = document.createTextNode(`Seats Avaliable: ${bindings.value.seats}`)
-        span.appendChild(text)
-        addClass(span, 'tooltip')
-        el.appendChild(span)
-        let div = el.getElementsByTagName('DIV')[0]
-        div.addEventListener('mouseover', mouseOverHandler)
-        div.addEventListener('mouseout', mouseOutHandler)
-        div.addEventListener('touchstart', mouseOverHandler)
-        div.addEventListener('touchsend', mouseOutHandler)
-    },
-    unbind(el) {
-        let div = el.getElementsByTagName('DIV')[0]
-        div.removeEventListener('mouseover', mouseOverHandler)
-        div.removeEventListener('mouseout', mouseOutHandler)
-        div.removeEventListener('touchstart', mouseOverHandler)
-        div.removeEventListener('touchsend', mouseOutHandler)
-    }
-})
-
-let mouseOverHandler = function (e) {
-    let span = e.target.parentNode.getElementsByTagName('SPAN')[0]
-    addClass(span, 'tooltip-show')
-}
-
-let mouseOutHandler = function (e) {
-    let span = e.target.parentNode.getElementsByTagName('SPAN')[0]
-    removeClass(span, 'tooltip-show')
-}
